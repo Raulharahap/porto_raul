@@ -1,0 +1,414 @@
+/* ==========================================================================
+   PORTFOLIO STYLES - RAUL DANOVAN HARAHAP
+   Tema: Dark Mode Futuristik (#0b0f19 / #090d16) dengan Aksen Cyan/Emerald/Violet
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. ROOT VARIABLES & GLOBAL SETUP
+   -------------------------------------------------------------------------- */
+:root {
+  --bg-primary: #090d16;
+  --bg-secondary: #0f172a;
+  --bg-card: rgba(15, 23, 42, 0.75);
+  --border-card: rgba(51, 65, 85, 0.5);
+
+  --accent-cyan: #06b6d4;
+  --accent-cyan-glow: rgba(6, 182, 212, 0.4);
+  --accent-emerald: #10b981;
+  --accent-emerald-glow: rgba(16, 185, 129, 0.4);
+  --accent-violet: #8b5cf6;
+  --accent-violet-glow: rgba(139, 92, 246, 0.35);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   2. CUSTOM SCROLLBAR
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1e293b, #0f766e, #0e7490);
+  border-radius: 9999px;
+  border: 2px solid #090d16;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #334155, #14b8a6, #06b6d4);
+}
+
+/* --------------------------------------------------------------------------
+   3. BACKGROUND AMBIENT GLOW & FLOATING ANIMATIONS
+   -------------------------------------------------------------------------- */
+.ambient-glow-cyan,
+.ambient-glow-violet,
+.ambient-glow-emerald {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-glow-cyan {
+  width: 32rem;
+  height: 32rem;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+  filter: blur(50px);
+}
+
+.ambient-glow-violet {
+  width: 34rem;
+  height: 34rem;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.13) 0%, transparent 70%);
+  filter: blur(55px);
+}
+
+.ambient-glow-emerald {
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+  filter: blur(50px);
+}
+
+@keyframes blobFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.blob-float-1 {
+  animation: blobFloat 12s infinite ease-in-out;
+}
+
+.blob-float-2 {
+  animation: blobFloat 15s infinite ease-in-out reverse;
+}
+
+.blob-float-3 {
+  animation: blobFloat 10s infinite ease-in-out 2s;
+}
+
+/* Grid background subtle pattern */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* --------------------------------------------------------------------------
+   4. GLASSMORPHISM & UI COMPONENTS
+   -------------------------------------------------------------------------- */
+.glass-card {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(51, 65, 85, 0.45);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.2);
+}
+
+/* Profile Animations */
+.profile-glow-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 2rem;
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6, #10b981, #06b6d4);
+  background-size: 300% 300%;
+  animation: gradientRotate 6s ease infinite;
+  filter: blur(8px);
+  opacity: 0.85;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+.group:hover .profile-glow-ring {
+  opacity: 1;
+  filter: blur(14px);
+}
+
+.profile-border-frame {
+  position: absolute;
+  inset: -2px;
+  border-radius: 1.85rem;
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6, #10b981);
+  background-size: 300% 300%;
+  animation: gradientRotate 6s ease infinite;
+  z-index: 1;
+}
+
+.profile-img-wrapper {
+  position: relative;
+  border-radius: 1.75rem;
+  overflow: hidden;
+  z-index: 2;
+  background: #0f172a;
+}
+
+/* --------------------------------------------------------------------------
+   5. NEON, GLOW UTILITY & ANIMATED TEXT
+   -------------------------------------------------------------------------- */
+@keyframes gradientRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes textGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: textGradient 4s linear infinite;
+}
+
+.glow-text-cyan {
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+}
+
+/* Buttons */
+.glow-btn-cyan {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
+}
+
+.glow-btn-cyan:hover {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.6), 0 0 45px rgba(6, 182, 212, 0.25);
+  transform: translateY(-2px);
+}
+
+.glow-btn-outline {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+}
+
+.glow-btn-outline:hover {
+  border-color: rgba(6, 182, 212, 0.9);
+  background: rgba(6, 182, 212, 0.08);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  transform: translateY(-2px);
+}
+
+@keyframes floatBadge {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: floatBadge 4s ease-in-out infinite;
+}
+
+.skill-tag {
+  transition: all 0.25s ease;
+}
+
+.skill-tag:hover {
+  transform: translateY(-3px) scale(1.05);
+  border-color: rgba(6, 182, 212, 0.6);
+  box-shadow: 0 4px 15px -2px rgba(6, 182, 212, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   6. SCROLL REVEAL ANIMATIONS (Smooth Stagger)
+   -------------------------------------------------------------------------- */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 {
+  transition-delay: 100ms;
+}
+
+.delay-200 {
+  transition-delay: 200ms;
+}
+
+.delay-300 {
+  transition-delay: 300ms;
+}
+
+.delay-400 {
+  transition-delay: 400ms;
+}
+
+.delay-500 {
+  transition-delay: 500ms;
+}
+
+/* --------------------------------------------------------------------------
+   7. 3D TILT CARDS & PARALLAX
+   -------------------------------------------------------------------------- */
+.tilt-card-wrapper {
+  perspective: 1000px;
+  /* Jarak perspektif 3D */
+  cursor: pointer;
+  display: block;
+}
+
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  border-radius: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  /* Kunci kemulusan (smoothness) anti-patah-patah ada pada baris ini */
+  transition: transform 0.15s ease-out;
+}
+
+/* Layer Kedalaman Parallax 3D (Elemen dalam kartu jadi terasa melayang) */
+.tilt-element-depth {
+  transform: translateZ(30px);
+  transform-style: preserve-3d;
+}
+
+.tilt-banner-depth {
+  transform: translateZ(15px);
+  transform-style: preserve-3d;
+}
+
+.tilt-buttons-depth {
+  transform: translateZ(40px);
+  transform-style: preserve-3d;
+}
+
+.tilt-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 20;
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   8. TOAST NOTIFICATION STYLING
+   -------------------------------------------------------------------------- */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.toast {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(6, 182, 212, 0.5);
+  color: #f8fafc;
+  padding: 0.85rem 1.4rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 0 15px rgba(6, 182, 212, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 0.9rem;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   IMAGE PREVIEW MODAL STYLES
+   ========================================================================== */
+#image-modal {
+  will-change: opacity;
+}
+
+#modal-image {
+  will-change: transform;
+}
+
+/* Modal Open State */
+#image-modal:not(.hidden) {
+  display: block;
+}
+
+/* Responsive Image Adjustments for small screens */
+@media (max-width: 640px) {
+  #modal-image {
+    max-h: 75vh;
+  }
+}
